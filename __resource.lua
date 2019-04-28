@@ -12,6 +12,7 @@ server_scripts {
 	'locales/en.lua',
 	'locales/pl.lua',
 	'locales/sv.lua',
+	'locales/pt.lua',
 	'config.lua',
 	'server/main.lua'
 }
@@ -24,6 +25,7 @@ client_scripts {
 	'locales/en.lua',
 	'locales/pl.lua',
 	'locales/sv.lua',
+	'locales/pt.lua',
 	'config.lua',
 	'client/main.lua'
 }
@@ -35,7 +37,7 @@ files {
 	'html/logo.png',
 	'html/dmv.png',
 	'html/styles.css',
-	'html/questions.js',
+	'html/questions_pt.js',
 	'html/scripts.js',
 	'html/debounce.min.js'
 }
