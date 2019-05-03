@@ -37,7 +37,7 @@ files {
 	'html/logo.png',
 	'html/dmv.png',
 	'html/styles.css',
-	'html/questions_pt.js',
+	'html/questions.js',
 	'html/scripts.js',
 	'html/debounce.min.js'
 }

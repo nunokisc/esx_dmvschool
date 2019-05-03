@@ -41,6 +41,7 @@ function DrawMissionText(msg, time)
 end
 
 function StartTheoryTest()
+	
 	CurrentTest = 'theory'
 
 	SendNUIMessage({
@@ -51,7 +52,6 @@ function StartTheoryTest()
 		SetNuiFocus(true, true)
 	end)
 
-	TriggerServerEvent('esx_dmvschool:pay', Config.Prices['dmv'])
 end
 
 function StopTheoryTest(success)
@@ -72,6 +72,7 @@ function StopTheoryTest(success)
 end
 
 function StartDriveTest(type)
+	
 	ESX.Game.SpawnVehicle(Config.VehicleModels[type], Config.Zones.VehicleSpawnPoint.Pos, Config.Zones.VehicleSpawnPoint.Pos.h, function(vehicle)
 		CurrentTest       = 'drive'
 		CurrentTestType   = type
@@ -87,7 +88,6 @@ function StartDriveTest(type)
 		TaskWarpPedIntoVehicle(playerPed, vehicle, -1)
 	end)
 
-	TriggerServerEvent('esx_dmvschool:pay', Config.Prices[type])
 end
 
 function StopDriveTest(success)
@@ -157,9 +157,21 @@ function OpenDMVSchoolMenu()
 	}, function(data, menu)
 		if data.current.value == 'theory_test' then
 			menu.close()
-			StartTheoryTest()
+			ESX.TriggerServerCallback('esx_dmvschool:canYouPay', function(haveMoney)
+				if haveMoney then
+					StartTheoryTest()
+				else
+					ESX.ShowNotification(_U('not_enough_money'))
+				end
+			end, 'dmv')
 		elseif data.current.value == 'drive_test' then
-			StartDriveTest(data.current.type)
+			ESX.TriggerServerCallback('esx_dmvschool:canYouPay', function(haveMoney)
+				if haveMoney then
+					StartDriveTest(data.current.type)
+				else
+					ESX.ShowNotification(_U('not_enough_money'))
+				end
+			end, data.current.type)
 		end
 	end, function(data, menu)
 		menu.close()
