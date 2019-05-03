@@ -41,7 +41,6 @@ function DrawMissionText(msg, time)
 end
 
 function StartTheoryTest()
-	
 	CurrentTest = 'theory'
 
 	SendNUIMessage({
@@ -51,7 +50,6 @@ function StartTheoryTest()
 	ESX.SetTimeout(200, function()
 		SetNuiFocus(true, true)
 	end)
-
 end
 
 function StopTheoryTest(success)
@@ -72,7 +70,6 @@ function StopTheoryTest(success)
 end
 
 function StartDriveTest(type)
-	
 	ESX.Game.SpawnVehicle(Config.VehicleModels[type], Config.Zones.VehicleSpawnPoint.Pos, Config.Zones.VehicleSpawnPoint.Pos.h, function(vehicle)
 		CurrentTest       = 'drive'
 		CurrentTestType   = type
@@ -87,7 +84,6 @@ function StartDriveTest(type)
 		local playerPed   = PlayerPedId()
 		TaskWarpPedIntoVehicle(playerPed, vehicle, -1)
 	end)
-
 end
 
 function StopDriveTest(success)
@@ -103,7 +99,7 @@ function StopDriveTest(success)
 end
 
 function SetCurrentZoneType(type)
-CurrentZoneType = type
+	CurrentZoneType = type
 end
 
 function OpenDMVSchoolMenu()

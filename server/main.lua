@@ -4,7 +4,6 @@ TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 
 ESX.RegisterServerCallback('esx_dmvschool:canYouPay', function(source, cb, type)
 	local xPlayer = ESX.GetPlayerFromId(source)
-
 	if xPlayer.getMoney() >= Config.Prices[type] then
 		xPlayer.removeMoney(Config.Prices[type])
 		TriggerClientEvent('esx:showNotification', source, _U('you_paid', Config.Prices[type]))
